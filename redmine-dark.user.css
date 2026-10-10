@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Redmine Mikroways Dark
 @namespace      github.com/juanpsm/userstyles
-@version        1.2.1
+@version        1.3.0
 @description    Dark mode for proyectos.mikroways.net
 @author         Mikroways
 @homepageURL    https://github.com/juanpsm/userstyles
@@ -22,9 +22,17 @@
     --link:         #6fb3ff;
     --link-visited: #a98fe0;
     --accent:       #3d6ea8;
+
+    /* Dark native scrollbars and form controls. */
+    color-scheme: dark;
   }
 
   /* ---- surfaces ---- */
+
+  /* Catch-all for light borders that Redmine sets on elements not listed
+     below. `*` has the lowest specificity, so any more specific rule that sets
+     its own border color (flash messages, checked boxes, ...) still wins. */
+  * { border-color: var(--border) !important; }
 
   body, #wrapper, #main, #content, #sidebar,
   #admin-menu, .splitcontent, .splitcontentleft, .splitcontentright {
@@ -202,6 +210,15 @@
     background: var(--panel-raised) !important;
     color: var(--text) !important;
     border-color: var(--border) !important;
+  }
+  .pagination a:hover { background: var(--accent) !important; color: #fff !important; }
+  .pagination li.current span, .pagination li.current a {
+    background: var(--accent) !important; color: #fff !important; font-weight: 600;
+  }
+  /* Disabled Previous/Next and the "..." gap. */
+  .pagination li.previous span:not(a), .pagination li.next span:not(a),
+  .pagination li.spacer span {
+    background: var(--panel) !important; color: var(--text-muted) !important; cursor: default;
   }
 
   /* The header of each history note. */
