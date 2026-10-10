@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Redmine Mikroways Dark
 @namespace      github.com/juanpsm/userstyles
-@version        1.2.0
+@version        1.2.1
 @description    Dark mode for proyectos.mikroways.net
 @author         Mikroways
 @homepageURL    https://github.com/juanpsm/userstyles
@@ -144,6 +144,19 @@
     background: var(--accent) !important;
     color: #fff !important;
   }
+
+  /* The wrapper `span` around groups of those buttons: the Gantt zoom
+     (Zoom in / Zoom out) and the "« Previous | Next »" links. Redmine gives it
+     a white background and a light border. */
+
+  .contextual > span:not(.drdn),
+  p.buttons > span:not(.drdn),
+  .other-formats > span {
+    background-color: var(--panel-raised) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+  .contextual > span:not(.drdn) span.icon { color: var(--text-muted) !important; }
 
   /* ---- icons ----
      In this Redmine they are inline SVGs that inherit the text color, so they
