@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Redmine Mikroways Dark
 @namespace      github.com/juanpsm/userstyles
-@version        1.3.3
+@version        1.3.4
 @description    Dark mode for proyectos.mikroways.net
 @author         Mikroways
 @homepageURL    https://github.com/juanpsm/userstyles
@@ -307,8 +307,20 @@
      The selected entry ("Sort by: Category", saved queries...) has a pale blue
      background that is unreadable with the blue link text. */
 
-  #sidebar li > a.selected, #sidebar ul li > a:not(.icon-only).selected {
+  #sidebar li > a.selected, #sidebar ul li > a:not(.icon-only).selected,
+  #sidebar a.dashboard.selected {
     background-color: var(--accent) !important;
     color: #fff !important;
+  }
+
+  /* ---- project overview and "My page" blocks ----
+     Each block (Members, Issues, Time tracking...) is a `.mypage-box` with a
+     white background. Our light text was landing on it, which is why the
+     titles and labels looked washed out. */
+
+  .mypage-box, #my-page div.mypage-box.dashboard-block {
+    background-color: var(--panel) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
   }
 }
