@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Redmine Mikroways Dark
 @namespace      github.com/juanpsm/userstyles
-@version        1.3.4
+@version        1.3.5
 @description    Dark mode for proyectos.mikroways.net
 @author         Mikroways
 @homepageURL    https://github.com/juanpsm/userstyles
@@ -201,7 +201,8 @@
     color: var(--text) !important;
     border-color: var(--border) !important;
   }
-  .ui-menu .ui-state-active, .drdn-content a:hover, ul.menu-children a:hover {
+  .ui-menu .ui-state-active, .drdn-content a:hover, ul.menu-children a:hover,
+  .dropdown-content a:hover, .dropdown-content a:focus {
     background: var(--accent) !important; color: #fff !important;
   }
 
