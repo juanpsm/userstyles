@@ -1,0 +1,252 @@
+/* ==UserStyle==
+@name           Redmine Mikroways Dark
+@namespace      github.com/juanpsm/userstyles
+@version        1.2.0
+@description    Dark mode for proyectos.mikroways.net
+@author         Mikroways
+@homepageURL    https://github.com/juanpsm/userstyles
+@supportURL     https://github.com/juanpsm/userstyles/issues
+@updateURL      https://raw.githubusercontent.com/juanpsm/userstyles/main/redmine-dark.user.css
+@preprocessor   default
+==/UserStyle== */
+
+@-moz-document domain("proyectos.mikroways.net") {
+
+  :root {
+    --bg:           #1b1d21;  /* page background */
+    --panel:        #24272c;  /* boxes, sidebar, alternate rows */
+    --panel-raised: #2c3036;  /* hover and table headers */
+    --border:       #3a3f46;
+    --text:         #d7dade;
+    --text-muted:   #9aa0a7;
+    --link:         #6fb3ff;
+    --link-visited: #a98fe0;
+    --accent:       #3d6ea8;
+  }
+
+  /* ---- surfaces ---- */
+
+  body, #wrapper, #main, #content, #sidebar,
+  #admin-menu, .splitcontent, .splitcontentleft, .splitcontentright {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+  }
+
+  div.box, fieldset, #sidebar, .tabular, .attributes,
+  .journal, .wiki-page, .issue, .well, .query-columns {
+    background-color: var(--panel) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+
+  legend, h1, h2, h3, h4, caption { color: var(--text) !important; }
+
+  /* Without this, the body of descriptions and notes is almost invisible:
+     Redmine sets its own dark gray on them. It uses element selectors, which
+     have low specificity, so the rules further down (diffs, flash messages)
+     still win. */
+  p, li, td, th, dd, dt, label, span, div, strong, b, i,
+  ul, ol, h5, h6, blockquote, table { color: inherit !important; }
+
+  .wiki, .wiki *, .journal .wiki, .description, .attributes {
+    color: var(--text) !important;
+  }
+  .attributes th, .tabular label, th.attribute-name,
+  .author, em, .subject-label, #footer, .nodata {
+    color: var(--text-muted) !important;
+  }
+
+  /* ---- navigation bars ---- */
+
+  #top-menu { background: #15171a !important; border-bottom: 1px solid var(--border) !important; }
+  #header   { background: #202830 !important; border-bottom: 1px solid var(--border) !important; }
+  #header h1, #header a { color: var(--text) !important; }
+
+  #main-menu li a            { color: var(--text-muted) !important; background: transparent !important; }
+  #main-menu li a:hover      { color: #fff !important; background: var(--accent) !important; }
+  #main-menu li a.selected   { color: #fff !important; background: var(--accent) !important; }
+
+  /* ---- links ---- */
+
+  a, a:link                { color: var(--link) !important; }
+  a:visited                { color: var(--link-visited) !important; }
+  a:hover                  { color: #9cccff !important; }
+  a.issue.closed, .closed  { text-decoration: line-through; opacity: .75; }
+
+  /* ---- tables ---- */
+
+  table.list, table.list td, table.list th {
+    background-color: transparent !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+  table.list thead th, tr.group, .query-totals {
+    background-color: var(--panel-raised) !important;
+    color: var(--text) !important;
+  }
+  table.list tbody tr:nth-child(odd)  { background-color: var(--panel) !important; }
+  table.list tbody tr:nth-child(even) { background-color: var(--bg) !important; }
+  table.list tbody tr:hover           { background-color: var(--panel-raised) !important; }
+
+  /* ---- forms ---- */
+
+  input[type=text], input[type=password], input[type=email],
+  input[type=number], input[type=search], textarea, select {
+    background-color: #16181b !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+  }
+  input::placeholder, textarea::placeholder { color: #6b7076 !important; }
+
+  input[type=submit], input[type=button], button, .button {
+    background: var(--panel-raised) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+  }
+  input[type=submit]:hover, button:hover { background: var(--accent) !important; color: #fff !important; }
+
+  /* ---- tabs ---- */
+
+  .tabs ul li a            { background: var(--panel) !important; color: var(--text-muted) !important;
+                             border-color: var(--border) !important; }
+  .tabs ul li a.selected   { background: var(--accent) !important; color: #fff !important; }
+  .tabs                    { border-bottom-color: var(--border) !important; }
+
+  /* ---- code, diffs and wiki ---- */
+
+  pre, code, .syntaxhl, .filecontent {
+    background-color: #15171a !important;
+    color: #cfd4d9 !important;
+    border-color: var(--border) !important;
+  }
+  .diff_in  { background: #1d3a26 !important; color: #b8e6c4 !important; }
+  .diff_out { background: #3d1f24 !important; color: #f0b9c0 !important; }
+  blockquote { border-left-color: var(--accent) !important; color: var(--text-muted) !important; }
+
+  /* ---- flash messages ---- */
+
+  div.flash.notice  { background: #1d3a26 !important; color: #b8e6c4 !important; border-color: #2f5e3e !important; }
+  div.flash.error, #errorExplanation { background: #3d1f24 !important; color: #f0b9c0 !important; border-color: #6b3038 !important; }
+  div.flash.warning { background: #3d3419 !important; color: #ecd9a0 !important; border-color: #6b5c2a !important; }
+
+  /* ---- action buttons at the top right ----
+     They are `a.icon` inside `.contextual`, in Redmine's blue. They get the
+     same look as the rest of the controls. */
+
+  #content .contextual a.icon,
+  #content .contextual a.button {
+    background: var(--panel-raised) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+  }
+  #content .contextual a.icon:hover,
+  #content .contextual a.button:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+  }
+
+  /* ---- icons ----
+     In this Redmine they are inline SVGs that inherit the text color, so they
+     follow the button or link with no extra work. There is no sprite to
+     invert: an earlier version of this sheet inverted `.icon::before`, which
+     does not exist in this theme. */
+
+  svg.icon-svg { stroke: currentColor !important; }
+  img.gravatar { opacity: .9; }
+
+  /* ---- "% done" progress bar ---- */
+
+  table.progress          { background: #16181b !important; border: 1px solid var(--border) !important; }
+  table.progress td.todo  { background: #16181b !important; }
+  table.progress td.closed{ background: #3d6ea8 !important; }
+  table.progress td.done  { background: #4e8f5c !important; }
+  p.percent, .progress-info { color: var(--text-muted) !important; }
+
+  /* ---- surfaces that were still light ----
+     Found by sweeping the DOM for backgrounds with high luminance. They only
+     show up once you look at the fully rendered page. */
+
+  /* The project menu bar. Its class is `tabs`, the same as the tabs inside an
+     issue, but only this one sets the background. */
+  #main-menu, div.tabs, div.tabs-buttons { background: var(--panel) !important; }
+  .flyout-menu, #sidebar-switch-panel {
+    background: var(--panel) !important; border-color: var(--border) !important;
+  }
+
+  /* The three-dots button and everything it opens. */
+  .drdn-trigger, .drdn-content, .dropdown-content, ul.menu-children,
+  ul.ui-autocomplete, .ui-menu.ui-widget-content {
+    background: var(--panel-raised) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+  .ui-menu .ui-state-active, .drdn-content a:hover, ul.menu-children a:hover {
+    background: var(--accent) !important; color: #fff !important;
+  }
+
+  /* « Previous, 1/27, Next » */
+  .pagination a, .pagination span, .pagination li a {
+    background: var(--panel-raised) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+
+  /* The header of each history note. */
+  h4.journal-header {
+    background: var(--panel-raised) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+
+  /* Tables written inside a note or wiki text. */
+  .wiki table th { background: var(--panel-raised) !important; color: var(--text) !important; }
+  .wiki table td, .wiki table th { border-color: var(--border) !important; }
+
+  /* PDF, Atom, CSV, "Back to top" and the copy button on code blocks. */
+  a.pdf, a.atom, a.csv, a.mikroways-pdf, a.icon-page-up, a.copy-pre-content-link {
+    background: var(--panel-raised) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+
+  input.date, .wiki-preview {
+    background: #16181b !important; color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+
+  /* ---- the projects page ----
+     The board draws each project as an `li.root` with a white background, and
+     the buttons below the filter are `a.icon` inside `p.buttons`, not inside
+     `.contextual` like the ones at the top right. */
+
+  #projects-index li.root, ul.projects li.root, ul.projects li.child {
+    background: var(--panel) !important;
+    border-color: var(--border) !important;
+  }
+  #content p.buttons a.icon, #content p.buttons a.button,
+  #content div.buttons a.icon, #content div.buttons a.button {
+    background: var(--panel-raised) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+  }
+  #content p.buttons a.icon:hover, #content div.buttons a.icon:hover {
+    background: var(--accent) !important; color: #fff !important;
+  }
+
+  /* Redmine draws checkboxes and radios with `appearance: none`, so the
+     background is a normal property and can be changed like any other. */
+  input[type=radio], input[type=checkbox] {
+    background-color: #16181b !important;
+    border-color: var(--border) !important;
+  }
+  input[type=checkbox]:checked {
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+  }
+
+  /* ---- calendar and gantt ---- */
+
+  table.cal td     { background: var(--panel) !important; border-color: var(--border) !important; }
+  table.cal td.odd { background: var(--bg) !important; }
+  .gantt_hdr       { background: var(--panel-raised) !important; border-color: var(--border) !important; }
+}

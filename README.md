@@ -1,44 +1,46 @@
 # userstyles
 
-Estilos de usuario para las herramientas internas de Mikroways. Se aplican con
-[Stylus](https://add0n.com/stylus.html), que existe para Firefox y para Chrome.
+User styles for Mikroways' internal tools. They are applied with
+[Stylus](https://add0n.com/stylus.html), which is available for Firefox and
+Chrome.
 
-| Estilo | Para |
+| Style | For |
 |---|---|
-| `redmine-oscuro.user.css` | Modo oscuro de [proyectos.mikroways.net](https://proyectos.mikroways.net) |
+| `redmine-dark.user.css` | Dark mode for [proyectos.mikroways.net](https://proyectos.mikroways.net) |
 
-## Instalar
+## Install
 
-Abrí en el browser la URL cruda del estilo y Stylus ofrece instalarlo:
+Open the raw URL of the style in the browser and Stylus offers to install it:
 
 ```
-https://raw.githubusercontent.com/juanpsm/userstyles/main/redmine-oscuro.user.css
+https://raw.githubusercontent.com/juanpsm/userstyles/main/redmine-dark.user.css
 ```
 
-Funciona igual en Firefox y en Chrome. Los dos quedan apuntando a esta misma
-URL, así que un cambio acá llega a los dos.
+It works the same in Firefox and Chrome. Both end up pointing at this same URL,
+so a change here reaches both.
 
-## Editar
+## Edit
 
-Cloná, editá, y **subí `@version`**. Stylus compara esa versión contra la que
-tiene instalada y, si no subió, no se trae nada aunque el archivo haya cambiado.
-El mensaje que muestra es `up-to-date: version is unchanged` y manda a buscar el
-problema al lado equivocado, porque el archivo sí cambió.
+Clone, edit, and **bump `@version`**. Stylus compares that version against the
+one it has installed and, if it did not go up, it fetches nothing even though
+the file changed. The message it shows is `up-to-date: version is unchanged`,
+which sends you looking for the problem in the wrong place, because the file
+did change.
 
 ```bash
 git clone git@github.com:juanpsm/userstyles.git
-# editar, subir @version
-git commit -am "redmine oscuro: ..."
+# edit, bump @version
+git commit -am "redmine dark: ..."
 git push
 ```
 
-Después, en cada browser: ícono de Stylus, *Administrar*, y *Buscar
-actualizaciones* en el estilo. También se actualiza solo según el intervalo que
-tengas configurado en las opciones de Stylus.
+Then, in each browser: Stylus icon, *Manage*, and *Check for update* on the
+style. It also updates on its own, following the interval set in Stylus's
+options.
 
-## Probar un cambio sin publicarlo
+## Try a change without publishing it
 
-En la página que querés ver, DevTools y pegar el cuerpo del `@-moz-document` en
-una etiqueta `<style>`. Alcanza para iterar sobre el color de algo. Ojo con leer
-una propiedad calculada en la misma llamada en que inyectás el estilo: devuelve
-el valor viejo.
+On the page you want to see, open DevTools and paste the body of the
+`@-moz-document` block into a `<style>` tag. That is enough to iterate on the
+color of something. Be careful not to read a computed property in the same call
+that injects the style: it returns the old value.
